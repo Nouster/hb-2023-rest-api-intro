@@ -1,0 +1,17 @@
+{
+  "name": "ld-web/products-api",
+  "description": "Products API",
+  "authors": [
+    {
+      "name": "Lucas Delobelle",
+      "email": "lucas@ld-web.net"
+    }
+  ],
+  "scripts": {
+    "start": "php -S localhost:8000"
+  },
+  "config": {
+    "process-timeout": 0
+  },
+  "require": {}
+}

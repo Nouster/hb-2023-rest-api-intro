@@ -1,0 +1,17 @@
+{
+  "name": "ld-web/api-intro",
+  "description": "API Introduction",
+  "authors": [
+    {
+      "name": "Lucas Delobelle",
+      "email": "lucas@ld-web.net"
+    }
+  ],
+  "scripts": {
+    "start": "php -S localhost:8000"
+  },
+  "config": {
+    "process-timeout": 0
+  },
+  "require": {}
+}
