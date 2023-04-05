@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product API Client</title>
+    <style>
+      #errors {
+        color: red;
+      }
+      #success {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Products</h1>
+
+    <div id="errors"></div>
+    <div id="success"></div>
+
+    <form id="productAddForm">
+      <div>
+        <input type="text" name="name" placeholder="Nom" />
+      </div>
+      <div>
+        <input type="text" name="baseprice" placeholder="Prix" />
+      </div>
+      <div>
+        <input type="text" name="description" placeholder="Description" />
+      </div>
+      <button type="submit">Ajouter</button>
+    </form>
+
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
