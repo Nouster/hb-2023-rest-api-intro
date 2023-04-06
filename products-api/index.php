@@ -33,7 +33,7 @@ if ($uri === '/insert') {
     'base_price' => $data['baseprice'],
     'desc_product' => $data['description']
   ]);
-  http_response_code(201);
+  http_response_code(201); // Created
 }
 
 if ($uri === '/update') {
@@ -48,5 +48,5 @@ if ($uri === '/update') {
     'desc_product' => $data['description'],
     'id' => $data['id']
   ]);
-  http_response_code(204);
+  http_response_code(204); // No content
 }
