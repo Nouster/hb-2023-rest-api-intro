@@ -77,23 +77,31 @@ if ($id === 0) {
   exit;
 }
 
+
 if ($resourceName === 'products' && $isItemOperation && $httpMethod === 'GET') {
-  $query = "SELECT * FROM products WHERE id = :id";
-  $stmt = $pdo->prepare($query);
-  $stmt->execute(['id' => $id]);
-
-  $product = $stmt->fetch();
-
-  if ($product === false) {
+  $id = intval($uriParts[2]);
+  try {
+    echo json_encode($productsCrud->find($id));
+  } catch (InvalidArgumentException $e) {
+    http_response_code(400);
+    echo json_encode([
+      "error" => "Une erreur est survenue.",
+      "code" => 400,
+      "message" => "L'ID spécifié n'est pas valide."
+    ]);
+  } catch (OutOfBoundsException $e) {
     http_response_code(404);
     echo json_encode([
-      'error' => 'Produit non trouvé'
+      "error" => "An error occured",
+      "code" => 404,
+      "message" => "L'ID spécifié n'existe pas."
     ]);
+  } finally {
     exit;
   }
-
-  echo json_encode($product);
 }
+
+
 
 if ($resourceName === 'products' && $isItemOperation && $httpMethod === 'PUT') {
   $data = json_decode(file_get_contents('php://input'), true);

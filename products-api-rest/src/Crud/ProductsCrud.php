@@ -3,6 +3,8 @@
 namespace App\Crud;
 
 use App\Crud\Exception\UnprocessableContentException;
+use InvalidArgumentException;
+use OutOfBoundsException;
 use PDO;
 
 class ProductsCrud
@@ -43,10 +45,22 @@ class ProductsCrud
     return ($products === false) ? [] : $products;
   }
 
+  
   public function find(int $id): ?array
   {
-    return [];
+      if ($id === 0) {
+          throw new InvalidArgumentException("L'ID spécifié n'est pas valide.");
+      }
+      $query = "SELECT * FROM products WHERE id = :id";
+      $stmt = $this->pdo->prepare($query);
+      $stmt->execute(['id' => $id]);
+      if (!$stmt->rowCount()) {
+          throw new OutOfBoundsException("L'ID spécifié n'existe pas.");
+      }
+      $item = $stmt->fetch();
+      return $item ?? null;
   }
+
 
   public function update(int $id, array $data): bool
   {
